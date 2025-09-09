@@ -1,71 +1,54 @@
-// Small JS for interactivity and animations (vanilla)
-document.addEventListener('DOMContentLoaded',function(){
-// year in footer
-document.getElementById('year').textContent = new Date().getFullYear();
+// 3D Resume interactive JS
+(function(){
+// set year
+document.addEventListener('DOMContentLoaded', ()=>{
+const y = new Date().getFullYear(); document.getElementById('year').textContent = y;
 
 
-// reveal on scroll
-const obs = new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting) entry.target.classList.add('show');
+// simple particles (small circles) to add depth
+const particles = document.getElementById('particles');
+for(let i=0;i<30;i++){ const s = document.createElement('div'); s.className='p'; s.style.left = Math.random()*100+'%'; s.style.top = Math.random()*100+'%'; s.style.width = 2+Math.random()*6+'px'; s.style.height = s.style.width; s.style.opacity = 0.06+Math.random()*0.2; particles.appendChild(s);}
+
+
+// tilt effect for profile card
+const card = document.getElementById('profileCard');
+const clamp = (v,min,max)=>Math.max(min,Math.min(max,v));
+card.addEventListener('pointermove', (e)=>{
+const r = card.getBoundingClientRect();
+const px = (e.clientX - r.left) / r.width - 0.5; // -0.5 to 0.5
+const py = (e.clientY - r.top) / r.height - 0.5;
+const rotateY = clamp(px * 20, -20, 20);
+const rotateX = clamp(-py * 18, -18, 18);
+card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(6px)`;
 });
-},{threshold:0.12});
-document.querySelectorAll('.reveal-up').forEach(el=>obs.observe(el));
+card.addEventListener('pointerleave', ()=>{ card.style.transform = 'none'; });
 
 
-// fill skill bars
-document.querySelectorAll('.bar').forEach(b=>{
-const pct = b.dataset.value||70;
-setTimeout(()=>{ b.querySelector(':scope::after'); b.style.setProperty('--pct', pct+'%'); b.querySelector('::after'); b.classList.add('activated'); b.style.setProperty('--w', pct+'%'); b.querySelector('::after');
-// work-around: set the pseudo-element width by toggling inline style on after via animation
-b.style.setProperty('position','relative');
-const inner = document.createElement('span');
-inner.style.position='absolute';inner.style.left=0;inner.style.top=0;inner.style.bottom=0;inner.style.width='0%';inner.style.borderRadius='999px';inner.style.background='linear-gradient(90deg, var(--accent1), var(--accent2))';inner.style.transition='width 1000ms cubic-bezier(.2,.9,.2,1)';
-b.appendChild(inner);
-requestAnimationFrame(()=>inner.style.width = pct+'%');
-},150);
-});
+// timeline depth parallax on scroll
+const track = document.getElementById('timelineTrack');
+window.addEventListener('scroll', ()=>{
+const top = window.scrollY; track.style.transform = `translateZ(${Math.min(0, -top*0.08)}px)`;
+}, {passive:true});
 
 
-// smooth anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-a.addEventListener('click', (e)=>{
-e.preventDefault();
-const id = a.getAttribute('href').slice(1);
-if(!id) return; const el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-});
-});
+// interactive cube slow down on hover
+const cube = document.getElementById('skillCube');
+let spinning = true; let angle = 0; let raf;
+function loop(){ angle += 0.25; cube.style.transform = `rotateX(10deg) rotateY(${angle}deg)`; raf=requestAnimationFrame(loop);} loop();
+cube.addEventListener('pointerenter', ()=>{ cancelAnimationFrame(raf); spinning=false; });
+cube.addEventListener('pointerleave', ()=>{ if(!spinning){ spinning=true; raf=requestAnimationFrame(loop);} });
 
 
-// contact form (local validation + friendly fake send)
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', function(e){
-e.preventDefault();
-const btn = form.querySelector('button');
-const orig = btn.textContent;
-btn.textContent = 'Sending...'; btn.disabled = true;
-setTimeout(()=>{
-btn.textContent = 'Message Sent ✓';
-form.reset();
-setTimeout(()=>{btn.textContent = orig;btn.disabled=false},1800);
-},1100);
+// graceful fallback: if portrait.jpg missing, place SVG
+const img = document.querySelector('.avatar img');
+img.addEventListener('error', ()=>{
+img.style.display='none';
+const svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.setAttribute('viewBox','0 0 200 200'); svg.style.width='150px'; svg.style.height='150px'; svg.innerHTML = '<rect width="200" height="200" rx="20" fill="url(#g)"/><defs><linearGradient id="g"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>';
+document.querySelector('.avatar').appendChild(svg);
 });
 
 
-// tiny parallax for bg based on mouse
-document.addEventListener('mousemove', (e)=>{
-const x = (e.clientX/window.innerWidth - 0.5)*20;
-const y = (e.clientY/window.innerHeight - 0.5)*20;
-document.querySelectorAll('.bg-layer').forEach((el,i)=>{
-el.style.transform = `translate(${x*(i+1)}px, ${y*(i+1)}px) scale(${1 + i*0.02})`;
-});
-});
 });
 
 
-/*
-* USAGE
-* - Replace avatar svg with your photo (same size) or put an "assets/portrait.jpg" and update index.html
-* - Drop the uploaded PDF (Abhishek_Panchgalle_Resume.pdf) in the same folder as the HTML so the "Download PDF" button works.
-* - To use on GitHub Pages: push these three files (index.html, styles.css, script.js) and the PDF into a repo and enable Pages on main branch (or gh-pages branch).
-*/
+})();
