@@ -3,89 +3,64 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Abhishek Panchgalle — Resume</title>
+<title>Abhishek Panchgalle — 3D Resume</title>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="styles.css">
-<script src="script.js"></script>
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script defer src="script.js"></script>
 </head>
 <body>
-<!-- Animated background layers -->
-<div class="bg-layer layer-1"></div>
-<div class="bg-layer layer-2"></div>
-<div class="bg-layer layer-3"></div>
+<div class="stage">
+<div class="scene">
+<!-- floating stars / particles -->
+<div id="particles"></div>
 
 
-<header class="topbar">
-<nav class="nav container">
-<a class="brand" href="#">Abhishek Panchgalle</a>
-<div class="nav-right">
-<a class="btn ghost" href="#projects">Projects</a>
-<a class="btn" href="#contact">Contact</a>
-<a class="btn download" href="Abhishek_Panchgalle_Resume.pdf" download>Download PDF</a>
+<!-- 3D profile card (tilt + depth) -->
+<header class="card profile" id="profileCard" tabindex="0">
+<div class="card-inner">
+<div class="card-face card-front">
+<div class="avatar">
+<!-- Replace with your photo if you have one named portrait.jpg next to files -->
+<img src="portrait.jpg" alt="Abhishek" onerror="this.style.opacity=0.06;this.style.filter='drop-shadow(0 10px 30px rgba(0,0,0,0.6))'">
 </div>
-</nav>
+<h1>Abhishek Panchgalle</h1>
+<p class="role">Full-Stack WordPress Developer</p>
+<div class="cta">
+<a class="btn" href="#contact">Contact</a>
+<a class="btn ghost" href="Abhishek_Panchgalle_Resume.pdf" download>Download PDF</a>
+</div>
+</div>
+
+
+<div class="card-face card-back">
+<h3>Quick Stats</h3>
+<ul class="stats">
+<li><strong>Experience</strong><span>2+ yrs</span></li>
+<li><strong>Location</strong><span>Pune, India</span></li>
+<li><strong>Top Tech</strong><span>WordPress • JS • Node</span></li>
+</ul>
+<div class="socials">
+<a href="#">GitHub</a>
+<a href="#">LinkedIn</a>
+</div>
+</div>
+</div>
 </header>
 
 
-<main class="container main-grid">
-<section class="hero card reveal-up" id="home">
-<div class="hero-left">
-<!-- replace with your own photo: img src="me.jpg" -->
-<div class="avatar">
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<linearGradient id="g" x1="0" x2="1">
-<stop offset="0" stop-color="#6EE7B7" />
-<stop offset="1" stop-color="#3B82F6" />
-</linearGradient>
-</defs>
-<rect fill="url(#g)" width="200" height="200" rx="24"/>
-<g transform="translate(30,36)" fill="#fff">
-<circle cx="50" cy="30" r="22" opacity="0.95"/>
-<rect x="3" y="72" width="94" height="14" rx="7"/>
-<rect x="3" y="92" width="70" height="10" rx="6"/>
-</g>
-</svg>
-</div>
-<h1>Hi, I'm <span class="accent">Abhishek</span></h1>
-<p class="lead">Full-Stack WordPress Developer — building fast, accessible & animated experiences.</p>
-
-
-<div class="cta-row">
-<a class="btn big" href="#contact">Hire me</a>
-<a class="btn outline" href="#projects">View work</a>
-</div>
-
-
-<ul class="meta">
-<li>📍 Pune</li>
-<li>✉️ <a href="mailto:abpsonu7@gmail.com">abpsonu7@gmail.com</a></li>
-<li>📞 +91 8421903846</li>
-</ul>
-</div>
-
-
-<div class="hero-right">
-<div class="profile-card float-card">
-<h3>Career Objective</h3>
-<p>Goal-oriented Full-Stack WordPress Developer with experience in custom themes, plugins and e-commerce.</p>
-
-
-<div class="skillset">
-<h4>Top Skills</h4>
-<div class="skills">
-<div class="skill"><span>WordPress</span><div class="bar" data-value="95"></div></div>
-<div class="skill"><span>HTML / CSS</span><div class="bar" data-value="90"></div></div>
-<div class="skill"><span>JavaScript</span><div class="bar" data-value="83"></div></div>
-<div class="skill"><span>Node.js</span><div class="bar" data-value="78"></div></div>
-</div>
+<!-- 3D skill cube -->
+<div class="cube-wrap">
+<div class="cube" id="skillCube">
+<div class="face f1">HTML<br><small>95%</small></div>
+<div class="face f2">CSS<br><small>92%</small></div>
+<div class="face f3">JS<br><small>85%</small></div>
+<div class="face f4">WP<br><small>95%</small></div>
+<div class="face f5">Node<br><small>80%</small></div>
+<div class="face f6">React<br><small>75%</small></div>
 </div>
 </div>
 
 
-<div class="timeline card reveal-up delay-1">
-<h4>Experience</h4>
-<ol>
-<li><strong>Web Developer</strong> — Magicworksit Sol. Pvt. Ltd (Jun 2024 - Present)</li>
+<!-- 3D timeline (cards in z-axis) -->
+<section class="timeline" id="experience">
+<h2 class="section-title">Experience</h2>
 </html>
