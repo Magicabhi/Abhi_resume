@@ -14,7 +14,11 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container nav-container">
-      <div class="logo">CodeByAbhi</div>
+      <div class="logo">
+        <span class="bracket">&#123;</span>
+        <span class="logo-text">CodeByAbhi</span>
+        <span class="bracket">&#125;</span>
+      </div>
 
       <div class="nav-buttons">
         <button id="toggleDark" class="nav-btn">🌙</button>
@@ -34,7 +38,7 @@
   <!-- Banner -->
   <header class="banner">
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="assets/background.mp4" type="video/mp4">
+      <source src="assets/background.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
@@ -46,7 +50,7 @@
           <p>I’m a passionate developer who builds responsive and dynamic websites using modern technologies.</p>
         </div>
         <div class="image-section">
-          <img src="assets/profile.jpg" alt="Profile Image">
+          <img src="assets/profile.jpg" alt="Profile Image" />
         </div>
       </div>
     </div>
@@ -98,10 +102,10 @@
         <p>Let’s work together! Fill out the form and I’ll get back to you.</p>
 
         <form action="https://formsubmit.co/abhipanchgalle001@gmail.com" method="POST" class="contact-form">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="box">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="box" />
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
           <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
           <button type="submit">Send Message</button>
         </form>
@@ -140,6 +144,5 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
   </script>
-
 </body>
 </html>
