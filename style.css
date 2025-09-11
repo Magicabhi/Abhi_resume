@@ -380,7 +380,7 @@ body.dark .contact-form textarea {
   }
 
   .skills-list {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
    .section {
