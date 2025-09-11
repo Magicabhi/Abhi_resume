@@ -2,39 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodeByAbhi - Web Developer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Resume</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
+
+  <!-- Navigation -->
   <nav class="navbar">
-    <div class="container">
-      <div class="logo">CodeByAbhi</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+    <div class="container nav-container">
+      <div class="logo">MyResume</div>
+
+      <div class="nav-buttons">
+        <button id="toggleDark" class="nav-btn">🌙</button>
+        <a href="assets/resume.pdf" download class="nav-btn download-btn">⬇️ Resume</a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+        <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
       </ul>
     </div>
   </nav>
 
+  <!-- Banner -->
   <header class="banner">
-    <video autoplay muted loop class="bg-video">
-      <source src="assets/background.mp4" type="video/mp4" />
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="assets/background.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+
     <div class="overlay">
       <div class="banner-content">
-        <h1>John Doe</h1>
-        <h2>Web Developer</h2>
-        <p>I build responsive and dynamic websites using modern technologies.</p>
+        <div class="text-section">
+          <h1>John Doe</h1>
+          <h2>Web Developer</h2>
+          <p>I’m a passionate developer who builds responsive and dynamic websites using modern technologies.</p>
+        </div>
+        <div class="image-section">
+          <img src="assets/profile.jpg" alt="Profile Image">
+        </div>
       </div>
     </div>
   </header>
 
+  <!-- Main Sections -->
   <main>
     <section id="about" class="section" data-aos="fade-up">
       <div class="container">
@@ -77,11 +95,13 @@
     <section id="contact" class="section" data-aos="fade-up">
       <div class="container">
         <h2>Contact Me</h2>
+        <p>Let’s work together! Fill out the form and I’ll get back to you.</p>
+
         <form action="https://formsubmit.co/abhipanchgalle001@gmail.com" method="POST" class="contact-form">
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="box" />
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
           <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
           <button type="submit">Send Message</button>
         </form>
@@ -89,11 +109,28 @@
     </section>
   </main>
 
+  <!-- Scroll to Top -->
   <button id="scrollTopBtn" title="Go to top">⬆️</button>
 
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
+
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    const toggleDark = document.getElementById("toggleDark");
+    const body = document.body;
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+    }
+    toggleDark.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      const theme = body.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+    });
 
     const scrollBtn = document.getElementById("scrollTopBtn");
     window.onscroll = function () {
@@ -103,5 +140,6 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
   </script>
+
 </body>
 </html>
