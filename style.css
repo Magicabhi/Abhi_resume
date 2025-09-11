@@ -387,7 +387,7 @@ body.dark .contact-form textarea {
   padding: 80px 50px;
    }
    .site-footer {
-  padding: 50px 50px;
+  padding: 50px 50px!important;
    }
 }
 /* ========== Experience Cards ========== */
