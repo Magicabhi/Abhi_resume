@@ -188,7 +188,7 @@ body, html {
    SECTIONS
 ============================= */
 .section {
-  padding: 80px 20px;
+  padding: 80px 120px;
   background: var(--bg-light);
   scroll-margin-top: 100px;
 }
@@ -475,7 +475,7 @@ body.dark .experience-card:hover {
 .site-footer {
   background: #222;
   color: #fff;
-  padding: 50px 20px;
+  padding: 50px 120px;
 }
 
 .footer-container {
