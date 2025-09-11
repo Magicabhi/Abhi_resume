@@ -384,3 +384,61 @@ body.dark .contact-form textarea {
     align-items: center;
   }
 }
+/* ========== Experience Cards ========== */
+.experience-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.experience-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border-left: 5px solid var(--primary-color);
+}
+
+.experience-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.experience-card span {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.experience-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.experience-card:hover {
+  background-color: #fef7e0;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode support */
+body.dark .experience-card {
+  background-color: #1e1e1e;
+  color: #eee;
+  border-left-color: var(--primary-color);
+}
+
+body.dark .experience-card p,
+body.dark .experience-card span {
+  color: #ccc;
+}
+
+body.dark .experience-card:hover {
+  background-color: #2a2a2a;
+}
