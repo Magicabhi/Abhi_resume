@@ -383,6 +383,12 @@ body.dark .contact-form textarea {
     flex-direction: column;
     align-items: center;
   }
+   .section {
+  padding: 80px 50px;
+   }
+   .site-footer {
+  padding: 50px 50px;
+   }
 }
 /* ========== Experience Cards ========== */
 .experience-wrapper {
