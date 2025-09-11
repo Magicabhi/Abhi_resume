@@ -1,66 +1,145 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Abhishek Panchgalle — 3D Resume</title>
-<link rel="stylesheet" href="styles.css">
-<script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Resume</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
-<div class="stage">
-<div class="scene">
-<!-- floating stars / particles -->
-<div id="particles"></div>
 
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">MyResume</div>
 
-<!-- 3D profile card (tilt + depth) -->
-<header class="card profile" id="profileCard" tabindex="0">
-<div class="card-inner">
-<div class="card-face card-front">
-<div class="avatar">
-<!-- Replace with your photo if you have one named portrait.jpg next to files -->
-<img src="portrait.jpg" alt="Abhishek" onerror="this.style.opacity=0.06;this.style.filter='drop-shadow(0 10px 30px rgba(0,0,0,0.6))'">
-</div>
-<h1>Abhishek Panchgalle</h1>
-<p class="role">Full-Stack WordPress Developer</p>
-<div class="cta">
-<a class="btn" href="#contact">Contact</a>
-<a class="btn ghost" href="Abhishek_Panchgalle_Resume.pdf" download>Download PDF</a>
-</div>
-</div>
+      <div class="nav-buttons">
+        <button id="toggleDark" class="nav-btn">🌙</button>
+        <a href="assets/resume.pdf" download class="nav-btn download-btn">⬇️ Resume</a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      </div>
 
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+        <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="card-face card-back">
-<h3>Quick Stats</h3>
-<ul class="stats">
-<li><strong>Experience</strong><span>2+ yrs</span></li>
-<li><strong>Location</strong><span>Pune, India</span></li>
-<li><strong>Top Tech</strong><span>WordPress • JS • Node</span></li>
-</ul>
-<div class="socials">
-<a href="#">GitHub</a>
-<a href="#">LinkedIn</a>
-</div>
-</div>
-</div>
-</header>
+  <!-- Banner -->
+  <header class="banner">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="assets/background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
+    <div class="overlay">
+      <div class="banner-content">
+        <div class="text-section">
+          <h1>John Doe</h1>
+          <h2>Web Developer</h2>
+          <p>I’m a passionate developer who builds responsive and dynamic websites using modern technologies.</p>
+        </div>
+        <div class="image-section">
+          <img src="assets/profile.jpg" alt="Profile Image">
+        </div>
+      </div>
+    </div>
+  </header>
 
-<!-- 3D skill cube -->
-<div class="cube-wrap">
-<div class="cube" id="skillCube">
-<div class="face f1">HTML<br><small>95%</small></div>
-<div class="face f2">CSS<br><small>92%</small></div>
-<div class="face f3">JS<br><small>85%</small></div>
-<div class="face f4">WP<br><small>95%</small></div>
-<div class="face f5">Node<br><small>80%</small></div>
-<div class="face f6">React<br><small>75%</small></div>
-</div>
-</div>
+  <!-- Main Sections -->
+  <main>
+    <section id="about" class="section" data-aos="fade-up">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>I’m a dedicated developer with a passion for building elegant web experiences.</p>
+      </div>
+    </section>
 
+    <section id="experience" class="section" data-aos="fade-right">
+      <div class="container">
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="job">
+            <h3>Front-End Developer</h3>
+            <span>ABC Company – 2022–2024</span>
+            <p>Built responsive web apps using React, improved performance by 30%.</p>
+          </div>
+          <div class="job">
+            <h3>Web Designer Intern</h3>
+            <span>XYZ Studio – 2021</span>
+            <p>Designed and coded websites for small businesses using HTML/CSS/JS.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- 3D timeline (cards in z-axis) -->
-<section class="timeline" id="experience">
-<h2 class="section-title">Experience</h2>
+    <section id="skills" class="section" data-aos="zoom-in">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          <li>HTML5</li>
+          <li>CSS3 / Tailwind</li>
+          <li>JavaScript / React</li>
+          <li>Git & GitHub</li>
+          <li>Responsive Design</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="section" data-aos="fade-up">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <p>Let’s work together! Fill out the form and I’ll get back to you.</p>
+
+        <form action="https://formsubmit.co/abhipanchgalle001@gmail.com" method="POST" class="contact-form">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scroll to Top -->
+  <button id="scrollTopBtn" title="Go to top">⬆️</button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    const toggleDark = document.getElementById("toggleDark");
+    const body = document.body;
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+    }
+    toggleDark.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      const theme = body.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+    });
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    scrollBtn.onclick = function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  </script>
+
+</body>
 </html>
