@@ -442,3 +442,132 @@ body.dark .experience-card span {
 body.dark .experience-card:hover {
   background-color: #2a2a2a;
 }
+.logo-slider-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+}
+
+.logo-slider a {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+.logo-slider img {
+  height: 60px;
+  width: auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logo-slider img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+.site-footer {
+  background: #222;
+  color: #fff;
+  padding: 50px 20px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-about h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #f0c040;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  margin: 10px 0;
+}
+
+.footer-contact a {
+  color: #f0c040;
+  text-decoration: none;
+}
+
+.social-icons a {
+  margin-right: 15px;
+  font-size: 1.5rem;
+}
+body.dark .site-footer {
+  background: #111;
+  color: #eee;
+}
+
+body.dark .footer-links a,
+body.dark .footer-contact a {
+  color: #f0c040;
+}
+.logo-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.autoplay-slider {
+  display: flex;
+  gap: 50px;
+  animation: scrollSlider 20s linear infinite;
+  width: max-content;
+}
+
+.autoplay-slider a img {
+  height: 60px;
+  filter: grayscale(100%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.autoplay-slider a img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+/* Keyframes for autoplay */
+@keyframes scrollSlider {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.logo-slider-wrapper:hover .autoplay-slider {
+  animation-play-state: paused;
+}
