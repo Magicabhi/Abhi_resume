@@ -39,10 +39,9 @@ body, html {
   position: sticky;
   top: 0;
   width: 100%;
-/*   background: rgba(0, 0, 0, 0.85); */
-   background: #f0c040;
+  background: #f0c040;
   backdrop-filter: blur(10px);
-  z-index: 1000;
+  z-index: 2000;   /* raised above banner video */
   padding: 15px 0;
 }
 
@@ -291,11 +290,11 @@ body, html {
    SCROLL TO TOP
 ============================= */
 #scrollTopBtn {
-  display: block;
+  display: none;   /* hide by default */
   position: fixed;
   bottom: 30px;
   right: 30px;
-  z-index: 999;
+  z-index: 9999;   /* increased to always stay on top */
   font-size: 1.5rem;
   background-color: var(--primary-color);
   color: #000;
@@ -592,4 +591,11 @@ body.dark .footer-contact a {
 /* Pause on hover */
 .logo-slider-wrapper:hover .autoplay-slider {
   animation-play-state: paused;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #bbb;
 }
