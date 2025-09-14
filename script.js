@@ -53,29 +53,3 @@ document.querySelector('.avatar').appendChild(svg);
 
 })();
 
-AOS.init({ duration: 1000, once: true });
-
-const navLinks = document.getElementById("navLinks");
-const menuToggle = document.getElementById("menuToggle");
-const scrollBtn = document.getElementById("scrollTopBtn");
-
-// Toggle Mobile Menu
-function toggleMenu() {
-  navLinks.classList.toggle("active");
-  menuToggle.textContent = navLinks.classList.contains("active") ? "✖" : "☰";
-}
-menuToggle.addEventListener("click", toggleMenu);
-
-// Scroll-to-Top Button
-window.onscroll = () => {
-  scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-};
-
-scrollBtn.onclick = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
-// Auto Year in Footer
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("year").textContent = new Date().getFullYear();
-});
