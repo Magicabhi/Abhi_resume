@@ -89,8 +89,8 @@ body, html {
 
 .nav-btn {
   background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #000;
+  color: #000;
   padding: 6px 12px;
   font-size: 0.9rem;
   border-radius: 5px;
