@@ -76,7 +76,8 @@ body, html {
 }
 
 .nav-links li a:hover {
-  color: var(--primary-color);
+/*   color: var(--primary-color); */
+   color: red;
   border-bottom: 1px solid red;
 }
 
