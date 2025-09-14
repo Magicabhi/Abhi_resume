@@ -108,7 +108,7 @@ body, html {
 .menu-toggle {
   display: none;
   font-size: 1.5rem;
-  color: var(--text-light);
+  color: #000000;
   cursor: pointer;
 }
 
@@ -159,7 +159,7 @@ body, html {
 }
 
 .text-section h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 10px;
 }
 
@@ -291,7 +291,7 @@ body, html {
    SCROLL TO TOP
 ============================= */
 #scrollTopBtn {
-  display: none;
+  display: block;
   position: fixed;
   bottom: 30px;
   right: 30px;
